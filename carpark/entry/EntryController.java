@@ -94,10 +94,11 @@ public class EntryController
 			setState(STATE.TAKEN);
 		}
 		else {
-			
-		
+			ui.beep();
+			log("ticketTaken: called while in incorrrect state");
+		}	
 	}
-
+		//ticketTaken method is completed
 
 
 	@Override
