@@ -56,6 +56,7 @@ public class EntryController
 
 	@Override
 	public void ticketInserted(String barcode) {
+		//Method try-catch
 		if (state_ == STATE>WAITING) {
 			try{
 				if(carpark.isSeasonTicketValid(barcode) &&
@@ -69,9 +70,20 @@ public class EntryController
 					log("ticketInserted: invalid ticket id");
 				}
 			}
-		// TODO Auto-generated method stub
-		
+			catch (NumberFormatException e) {
+				ui.beep();
+				seasonTicketId = null;
+				log("ticketInserted: invalid ticket id");
+			}
+		}
+		else {
+			ui.beep();
+			log("ticketInserted: called while in incorrect state");
+		}
 	}
+		//above method is completed
+		
+	
 
 
 
