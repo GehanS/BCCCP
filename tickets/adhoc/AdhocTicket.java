@@ -84,7 +84,10 @@ public class AdhocTicket implements IAdhocTicket {
 	@Override
 	public boolean isPaid() {
 		// TODO Auto-generated method stub
+		if(paidDateTime==0)
 		return false;
+            else
+                return true;
 	}
 
 
