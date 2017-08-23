@@ -101,6 +101,7 @@ public class AdhocTicket implements IAdhocTicket {
 	@Override
 	public void exit(long dateTime) {
 		// TODO Auto-generated method stub
+		this.exitDateTime= dateTime;
 		
 		
 	}
@@ -109,7 +110,7 @@ public class AdhocTicket implements IAdhocTicket {
 	@Override
 	public long getExitDateTime() {
 		// TODO Auto-generated method stub
-		return 0;
+		return exitDateTime;;
 	}
 
 
