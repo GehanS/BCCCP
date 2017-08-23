@@ -47,7 +47,14 @@ public class ExitController
 
 	@Override
 	public void ticketInserted(String ticketStr) {
-		// TODO Auto-generated method stub
+		//generating the method 
+		if(state == STATE.WAITING) {
+			adhocTicket = carpark.getAdhocTicket(ticketStr);
+			exitTime = System.currentTimeMillis();
+			if(adhocTicket != null && adhocTicket.isPaid()){
+				setState(STATE.PROCESSED);
+			}
+			else
 		
 	}
 
