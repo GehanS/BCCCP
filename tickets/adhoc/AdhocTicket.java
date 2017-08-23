@@ -46,6 +46,7 @@ public class AdhocTicket implements IAdhocTicket {
 	@Override
 	public void enter(long dateTime) {
 		// TODO Auto-generated method stub
+		this.entryDateTime= dateTime
 		
 	}
 
@@ -53,7 +54,7 @@ public class AdhocTicket implements IAdhocTicket {
 	@Override
 	public long getEntryDateTime() {
 		// TODO Auto-generated method stub
-		return 0;
+		return return entryDateTime;;
 	}
 
 
