@@ -38,6 +38,8 @@ public class EntryController
 		
 		outsideEntrySensor_.registerResponder(this);
 		insideEntrySensor_.registerResponder(this);
+		ui.registerController(this);
+		
 		
 	}
 
