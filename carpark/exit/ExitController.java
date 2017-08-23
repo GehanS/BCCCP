@@ -33,6 +33,14 @@ public class ExitController
 		this.is = is;
 		this.os = os;
 		this.ui = ui;
+		
+		os.registerResponder(this);
+		is.registerResponder(this);
+		ui.registerController(this);
+		
+		prevState = STATE.IDLE;
+		setState(STATE.IDLE);
+		//completed constructor
 	}
 
 
