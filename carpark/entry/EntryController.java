@@ -89,7 +89,12 @@ public class EntryController
 
 	@Override
 	public void ticketTaken() {
-		// TODO Auto-generated method stub
+		//ticketTaken method initialised
+		if (state_ == STATE.ISSUED || state_ == STATE.VALIDATED ) {
+			setState(STATE.TAKEN);
+		}
+		else {
+			
 		
 	}
 
