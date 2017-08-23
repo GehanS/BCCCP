@@ -54,9 +54,27 @@ public class ExitController
 			if(adhocTicket != null && adhocTicket.isPaid()){
 				setState(STATE.PROCESSED);
 			}
-			else
+			else{
+				ui.beep();
+				setState(STATE.REJECTED);
+			}
+		}
+		else if(carpark.isSeasonTicketValid(ticketStr) &&
+			carpark.isSeasonTicketInUse(ticketStr)) {
+			seasonTicketId = ticketStr;
+			setState(STATE.PROCESSED);
+		}
+		else{
+			ui.beep();
+			setState(STATE.REJECTED);
+		}
 		
 	}
+				   else{
+					   ui.beep();
+				   }
+			   }
+//completed the method 
 
 
 
