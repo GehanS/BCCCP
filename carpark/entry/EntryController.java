@@ -35,6 +35,10 @@ public class EntryController
 		this.outsideEntrySensor = os;
 		this.insideEntrySensor = is;
 		this.ui = ui;
+		
+		outsideEntrySensor_.registerResponder(this);
+		insideEntrySensor_.registerResponder(this);
+		
 	}
 
 
