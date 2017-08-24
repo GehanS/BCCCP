@@ -178,4 +178,7 @@ public class EntryController
 				     if (detectorId.equals(outsideEntrySensor_.getId()) && !detected) {
 					    setState(STATE.ENTERED);
 					}
+				else if (detectorId.equals(insideEntrySensor_.getId()) && !detected) {
+					    setState(STATE.IDLE);
+					}
 				 //completed carEventDetected method
