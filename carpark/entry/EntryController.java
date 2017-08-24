@@ -50,8 +50,15 @@ public class EntryController
 	public void buttonPushed() {
 		//button pushed method
 		if (state_ == STATE.WAITING){
+			if( !carpark.isFull()){
 			adhocTicket = carpark.issueAdhocTicket();
-		
+				String carparkId = adhocTicket.getCarparkId();
+				int ticketNo = adhocTicket.getTicketNo();
+				entryTime = System.currentTimeMillis();
+				
+				String barcode = adhocTicket.getBarcode();
+				ui.printTicket(carparkId, ticketNo, entryTime, barcode);
+				setState(STATE.ISSUED);
 	}
 
 
