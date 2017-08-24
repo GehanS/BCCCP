@@ -153,6 +153,12 @@ public class EntryController
 		}
 				    break;
 				    
+	case WAITING;
+        case FULL;
+	case VALIDATED;
+	case ISSUED;
+				    if (detectorId.equals(outsideEntrySensor_.getId()) && !detected) {
+					    setState(STATE.IDLE);
 	}
 
 	
