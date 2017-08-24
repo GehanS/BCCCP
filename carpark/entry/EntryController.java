@@ -148,7 +148,11 @@ public class EntryController
 					    log("eventDetected: setting state to WAITING");
 					    setState(STATE.WAITING);
 				    }
-		
+		else if(detectorId.equals(insideEntrySensor_.getId()) && detected) {
+			setState(STATE.BLOCKED);
+		}
+				    break;
+				    
 	}
 
 	
