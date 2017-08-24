@@ -135,10 +135,10 @@ public class EntryController
 	@Override
 	public void carEventDetected(String detectorId, boolean detected) {
 		// carEventDetected method
-		log("carEventDetected: " + detectorId + ", Detected: " + detected );
+		log("carEventDetected: " + detectorId + ", car Detected: " + detected );
 		switch (state_) {
 				case BLOCKED;
-				if (detectorId.equals(outsideEntrySensor_.getId()) && !detected {
+				if (detectorId.equals(insideEntrySensor_.getId()) && !detected {
 					setState(prevState_);
 				}
 				    break;
