@@ -86,6 +86,12 @@ public class ExitController
 		}
 		
 	}
+	else {
+			ui.beep();
+			log("ticketTaken: called while in incorrrect state");
+		}	
+	}
+//method is completed
 
 
 
