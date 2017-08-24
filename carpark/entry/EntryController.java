@@ -40,7 +40,7 @@ public class EntryController
 		insideEntrySensor_.registerResponder(this);
 		ui.registerController(this);
 		setState(STATE.IDLE);
-		
+		//completed the constructor
 		
 	}
 
@@ -60,6 +60,16 @@ public class EntryController
 				ui.printTicket(carparkId, ticketNo, entryTime, barcode);
 				setState(STATE.ISSUED);
 	}
+	else{
+		setState(STATE.FULL);
+	}
+}
+		else{
+			ui.beep();
+			log("ButtonPushed: called while in incorrect state");
+		}
+	}
+				   //complete buttonPushed method
 
 
 
