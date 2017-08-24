@@ -48,7 +48,9 @@ public class EntryController
 
 	@Override
 	public void buttonPushed() {
-		// TODO Auto-generated method stub
+		//button pushed method
+		if (state_ == STATE.WAITING){
+			adhocTicket = carpark.issueAdhocTicket();
 		
 	}
 
