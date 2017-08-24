@@ -138,7 +138,7 @@ public class EntryController
 		log("carEventDetected: " + detectorId + ", car Detected: " + detected );
 		switch (state_) {
 				case BLOCKED;
-				if (detectorId.equals(insideEntrySensor_.getId()) && !detected {
+				if (detectorId.equals(insideEntrySensor_.getId()) && !detected) {
 					setState(prevState_);
 				}
 				    break;
