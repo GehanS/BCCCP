@@ -159,7 +159,20 @@ public class EntryController
 	case ISSUED;
 				    if (detectorId.equals(outsideEntrySensor_.getId()) && !detected) {
 					    setState(STATE.IDLE);
-	}
+					}
+				  else if (detectorId.equals(insideEntrySensor_.getId()) && !detected) {
+					    setState(STATE.BLOCKED);
+				  }
+				    break;
+				    
+		case TAKEN:
+				    if (detectorId.equals(outsideEntrySensor_.getId()) && !detected) {
+					    setState(STATE.IDLE);
+					} 
+				      else if (detectorId.equals(insideEntrySensor_.getId()) && !detected) {
+					    setState(STATE.ENTERING);
+				  }
+				    break;
 
 	
 	
