@@ -125,6 +125,14 @@ public class ExitController
 					    setState(STATE.BLOCKED);
 				  }
 				    break;
+				case TAKEN:
+				    if (detectorId.equals(is.getId()) && !detected) {
+					    setState(STATE.IDLE);
+					} 
+				      else if (detectorId.equals(os.getId()) && !detected) {
+					    setState(STATE.EXITING);
+				  }
+				    break;
 	}
 
 	
