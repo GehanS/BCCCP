@@ -165,7 +165,7 @@ public class EntryController
 				  }
 				    break;
 				    
-		case TAKEN:
+				    case TAKEN:
 				    if (detectorId.equals(outsideEntrySensor_.getId()) && !detected) {
 					    setState(STATE.IDLE);
 					} 
@@ -173,7 +173,9 @@ public class EntryController
 					    setState(STATE.ENTERING);
 				  }
 				    break;
-
-	
-	
-}
+		
+				    case ENTERING:
+				     if (detectorId.equals(outsideEntrySensor_.getId()) && !detected) {
+					    setState(STATE.ENTERED);
+					}
+				 //completed carEventDetected method
