@@ -134,7 +134,15 @@ public class EntryController
 
 	@Override
 	public void carEventDetected(String detectorId, boolean detected) {
-		// TODO Auto-generated method stub
+		// carEventDetected method
+		log("carEventDetected: " + detectorId + ", Detected: " + detected );
+		switch (state_) {
+				case BLOCKED;
+				if (detectorId.equals(outsideEntrySensor_.getId()) && !detected {
+					setState(prevState_);
+				}
+				    break;
+				    
 		
 	}
 
