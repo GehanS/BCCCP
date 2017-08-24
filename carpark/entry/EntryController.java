@@ -142,7 +142,12 @@ public class EntryController
 					setState(prevState_);
 				}
 				    break;
-				    
+				    case IDLE;
+				    log("eventDetected: IDLE");
+				    if (detectorId.equals(outsideEntrySensor_.getId()) && detected) {
+					    log("eventDetected: setting state to WAITING");
+					    setState(STATE.WAITING);
+				    }
 		
 	}
 
