@@ -97,7 +97,15 @@ public class ExitController
 
 	@Override
 	public void carEventDetected(String detectorId, boolean detected) {
-		// TODO Auto-generated method stub
+		// carEventDetected method commences
+		
+		log("carEventDetected: " + detectorId + ", car Detected: " + detected );
+		switch (state) {
+				case BLOCKED;
+				if (detectorId.equals(is.getId()) && !detected) {
+					setState(prevState);
+				}
+				    break;
 		
 	}
 
