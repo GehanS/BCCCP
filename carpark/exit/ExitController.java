@@ -133,8 +133,13 @@ public class ExitController
 					    setState(STATE.EXITING);
 				  }
 				    break;
+				case EXITING:
+				     if (detectorId.equals(is.getId()) && !detected) {
+					    setState(STATE.EXITED);
+					}
+				else if (detectorId.equals(os.getId()) && !detected) {
+					    setState(STATE.TAKEN);
+					}
+		}
 	}
-
-	
-	
 }
