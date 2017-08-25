@@ -21,7 +21,9 @@ public class Carpark implements ICarpark {
 	public Carpark(String name, int capacity, 
 			IAdhocTicketDAO adhocTicketDAO, 
 			ISeasonTicketDAO seasonTicketDAO) {
-		//TODO Implement constructor
+		this.capacity = capacity;
+                this.adhocTicketDAO = adhocTicketDAO;
+                this.seasonTicketDAO = seasonTicketDAO;
 	}
 
 
@@ -29,7 +31,7 @@ public class Carpark implements ICarpark {
 	@Override
 	public void register(ICarparkObserver observer) {
 		// TODO Auto-generated method stub
-		
+		this.observers.add(observer);
 	}
 
 
@@ -37,7 +39,7 @@ public class Carpark implements ICarpark {
 	@Override
 	public void deregister(ICarparkObserver observer) {
 		// TODO Auto-generated method stub
-		
+		this.observers.remove(observer);
 	}
 
 
@@ -53,7 +55,14 @@ public class Carpark implements ICarpark {
 	@Override
 	public boolean isFull() {
 		// TODO Auto-generated method stub
+                if(observers.size() == capacity)
+                {
+                    return true;
+                }
+                else
+                {
 		return false;
+                }
 	}
 
 
@@ -61,7 +70,7 @@ public class Carpark implements ICarpark {
 	@Override
 	public IAdhocTicket issueAdhocTicket() {
 		// TODO Auto-generated method stub
-		return null;
+                return adhocTicketDAO.createTicket(carparkId);
 	}
 
 
