@@ -1,3 +1,4 @@
+//constructor and some methods have been implemented by Gehan
 package bcccp.carpark.entry;
 
 import bcccp.carpark.Carpark;
