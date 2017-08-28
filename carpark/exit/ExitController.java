@@ -27,33 +27,119 @@ public class ExitController
 			ICarSensor is,
 			ICarSensor os, 
 			IExitUI ui) {
-		//TODO Implement constructor
+		//contructor
+		this.carpark = carpark;
+		this.exitGate = exitGate;
+		this.is = is;
+		this.os = os;
+		this.ui = ui;
+		
+		os.registerResponder(this);
+		is.registerResponder(this);
+		ui.registerController(this);
+		
+		prevState = STATE.IDLE;
+		setState(STATE.IDLE);
+		//completed constructor
 	}
 
 
 
 	@Override
 	public void ticketInserted(String ticketStr) {
-		// TODO Auto-generated method stub
+		//generating the method 
+		if(state == STATE.WAITING) {
+			adhocTicket = carpark.getAdhocTicket(ticketStr);
+			exitTime = System.currentTimeMillis();
+			if(adhocTicket != null && adhocTicket.isPaid()){
+				setState(STATE.PROCESSED);
+			}
+			else{
+				ui.beep();
+				setState(STATE.REJECTED);
+			}
+		}
+		else if(carpark.isSeasonTicketValid(ticketStr) &&
+			carpark.isSeasonTicketInUse(ticketStr)) {
+			seasonTicketId = ticketStr;
+			setState(STATE.PROCESSED);
+		}
+		else{
+			ui.beep();
+			setState(STATE.REJECTED);
+		}
 		
 	}
+				   else{
+					   ui.beep();
+				   }
+			   }
+//completed the method 
 
 
 
 	@Override
 	public void ticketTaken() {
-		// TODO Auto-generated method stub
+		// ticketTaken method
+		if (state_ == STATE.ISSUED || state_ == STATE.VALIDATED ) {
+			setState(STATE.TAKEN);
+		}
 		
 	}
+	else {
+			ui.beep();
+			log("ticketTaken: called while in incorrrect state");
+		}	
+	}
+//method is completed
 
 
 
 	@Override
 	public void carEventDetected(String detectorId, boolean detected) {
-		// TODO Auto-generated method stub
+		// carEventDetected method commences
 		
+		log("carEventDetected: " + detectorId + ", car Detected: " + detected );
+		switch (state) {
+				case BLOCKED;
+				if (detectorId.equals(is.getId()) && !detected) {
+					setState(prevState);
+				}
+				    break;
+		 case IDLE;
+				    log("eventDetected: IDLE");
+				    if (detectorId.equals(is.getId()) && detected) {
+					    log("eventDetected: setting state to WAITING");
+					    setState(STATE.WAITING);
+				    }
+		else if(detectorId.equals(os.getId()) && detected) {
+			setState(STATE.BLOCKED);
+		}
+				    break;
+	case WAITING;
+        case PROCESSED;
+				    if (detectorId.equals(is.getId()) && !detected) {
+					    setState(STATE.IDLE);
+					}
+				  else if (detectorId.equals(os.getId()) && !detected) {
+					    setState(STATE.BLOCKED);
+				  }
+				    break;
+				case TAKEN:
+				    if (detectorId.equals(is.getId()) && !detected) {
+					    setState(STATE.IDLE);
+					} 
+				      else if (detectorId.equals(os.getId()) && !detected) {
+					    setState(STATE.EXITING);
+				  }
+				    break;
+				case EXITING:
+				     if (detectorId.equals(is.getId()) && !detected) {
+					    setState(STATE.EXITED);
+					}
+				else if (detectorId.equals(os.getId()) && !detected) {
+					    setState(STATE.TAKEN);
+					}
+		}
 	}
-
-	
-	
 }

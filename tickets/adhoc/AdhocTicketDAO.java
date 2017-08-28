@@ -11,7 +11,7 @@ public class AdhocTicketDAO  implements IAdhocTicketDAO  {
 	
 	public AdhocTicketDAO(IAdhocTicketFactory factory) {
 		//TODO Implement constructor
-		this.factory= factory;
+    this.factory= factory;
 	}
 
 
