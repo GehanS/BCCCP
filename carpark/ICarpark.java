@@ -1,7 +1,7 @@
 package bcccp.carpark;
 
 import bcccp.tickets.adhoc.IAdhocTicket;
-import bcccp.tickets.season.ISeasonTicket;
+
 
 public interface ICarpark {
 	
